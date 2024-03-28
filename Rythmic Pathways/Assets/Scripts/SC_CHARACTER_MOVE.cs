@@ -11,6 +11,7 @@ public class SC_CHARACTER_MOVE : MonoBehaviour
     public float moveSpeed = 5f; // Speed of character movement
     public float tileSize = 1f; // Size of each tile in the grid
     public float jumpHeight = 0.5f; // Height of the jump
+    public AnimationCurve jumpCurve; // Animation curve for jump interpolation
 
     private Vector3 targetPosition;
     private Vector3 moveDirection;
@@ -47,8 +48,9 @@ public class SC_CHARACTER_MOVE : MonoBehaviour
             while (elapsedTime < 1f)
             {
                 elapsedTime += Time.deltaTime * moveSpeed / journeyLength;
-                float jumpProgress = Mathf.Lerp(0f, jumpHeight, elapsedTime);
-                transform.position = Vector3.Lerp(transform.position, jumpTargetPosition, elapsedTime) + Vector3.up * jumpProgress;
+                float jumpProgress = jumpCurve.Evaluate(elapsedTime);
+                float interpolatedJumpHeight = Mathf.Lerp(0f, jumpHeight, jumpProgress);
+                Vector3 interpolatedPosition = Vector3.Lerp(transform.position, jumpTargetPosition, elapsedTime) + Vector3.up * interpolatedJumpHeight;
 
                 // Rotate character to face the movement direction
                 if (moveDirection != Vector3.zero)
@@ -56,6 +58,9 @@ public class SC_CHARACTER_MOVE : MonoBehaviour
                     Quaternion targetRotation = Quaternion.LookRotation(moveDirection); // Look along the move direction
                     transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, elapsedTime);
                 }
+
+                // Set character position
+                transform.position = interpolatedPosition;
 
                 yield return null;
             }

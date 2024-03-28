@@ -221,9 +221,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73e3dbc40e99e234388b54c009b4bc3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 80
+  moveSpeed: 30
   tileSize: 1
-  jumpHeight: 0.5
+  jumpHeight: 1
+  jumpCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.29886496
+      outSlope: 0.29886496
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.77165616
+      value: 0.23062098
+      inSlope: 0.7647869
+      outSlope: 0.7647869
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.103380375
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 3.369388
+      outSlope: 3.369388
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!4 &105198458 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1334505849181696209, guid: 9bb860cdd82491747a812a7364fcef04, type: 3}
