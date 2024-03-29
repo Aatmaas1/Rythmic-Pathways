@@ -6,9 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class SC_CadenceColl : MonoBehaviour
 {
-    public int pv = 5;
+    int pv = 5;
     public int score = 0;
-    public bool isColl;
+    public int tileScore;
+    bool isColl;
     private void OnCollisionEnter(Collision collision)
     {
         print("Collided");
@@ -31,7 +32,7 @@ public class SC_CadenceColl : MonoBehaviour
         if (collision.gameObject.tag == "LightCube")
         {
             print("yayy");
-            score += 1;
+            score += tileScore;
             isColl = true;
             Destroy(collision.gameObject);
         }

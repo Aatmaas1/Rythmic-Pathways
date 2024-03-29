@@ -4,87 +4,80 @@ using UnityEngine;
 
 public class SC_GridShiny : MonoBehaviour
 {
-    //fait par IA
-    public int gridSizeX;
-    public int gridSizeY;
-    public float cellSize;
+    public int pathLength; // Longueur du chemin
+    public float cellSize; // Taille de la cellule
+    public GameObject pathPrefab; // Préfabriqué du chemin
 
-    //fait par humain
-    public float cellSizeY;
-    public bool cubeColor;
-    public Color color1;
-    public Color color2;
+    private List<GameObject> pathBlocks;
 
-
-    public GameObject cubeFab;
-    GameObject player; 
-    List<GameObject> createdCubes;
-
-    //fait par IA
-    private void Start()
+    void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        CreateGrid();
-        cubeColor = false;
+        GeneratePath();
     }
 
-    private void CreateGrid()
+    void GeneratePath()
     {
-        for (int x = 0; x < gridSizeX; x++)
+        pathBlocks = new List<GameObject>();
+
+        Vector3 currentPosition = Vector3.zero;
+
+        for (int i = 0; i < pathLength; i++)
         {
-            //fait par humain
-            if (cubeColor == false)
-            {
-                cubeColor = true;
-            }
-            else
-            {
-                cubeColor = false;
-            }
+            // Instancier le bloc du chemin à la position actuelle
+            GameObject pathBlock = Instantiate(pathPrefab, currentPosition, Quaternion.identity);
+            pathBlocks.Add(pathBlock);
 
-            //fait par IA
-            for (int y = 0; y < gridSizeY; y++)
-            {
-                Vector3 cellPosition = new Vector3(x * cellSize, 0f, y * cellSize);
-                GameObject cube = GameObject.Instantiate(cubeFab);
+            // Calculer la prochaine position du chemin
+            Vector3 nextPosition = GetNextPosition(currentPosition);
 
-                //fait par humain
-                Renderer renderer = cube.GetComponent<Renderer>();
-
-                if (cubeColor == false)
-                {
-                    renderer.material.color = color1;
-                    cubeColor = true;
-                }
-                else
-                {
-                    renderer.material.color = color2;
-                    cubeColor = false;
-                }
-
-                //fait par IA
-                cube.transform.position = cellPosition;
-                cube.transform.localScale = new Vector3(cellSize, cellSizeY, cellSize);
-                cube.transform.parent = transform;
-
-                //createdCubes.Add(cube);
-            }
+            // Passer à la prochaine position
+            currentPosition = nextPosition;
         }
     }
 
-    public void DestroyGrid()
+    Vector3 GetNextPosition(Vector3 currentPosition)
     {
-        //createdCubes.Clear();
+        // Générer aléatoirement la direction de la prochaine position
+        int direction = Random.Range(0, 4); // 0: haut, 1: bas, 2: gauche, 3: droite
 
-        transform.position = player.transform.position;
-        CreateGrid();
+        switch (direction)
+        {
+            case 0:
+                return currentPosition + Vector3.forward * cellSize;
+            case 1:
+                return currentPosition - Vector3.forward * cellSize;
+            case 2:
+                return currentPosition - Vector3.right * cellSize;
+            case 3:
+                return currentPosition + Vector3.right * cellSize;
+            default:
+                return currentPosition;
+        }
     }
 
-    private void Update()
+    public void CheckPathBlocks()
     {
-        if(transform.childCount == 0)
+        foreach (GameObject block in pathBlocks)
         {
-            DestroyGrid();
+            if (block != null)
+            {
+                // Au moins un bloc existe encore, donc le chemin n'est pas encore complètement détruit
+                return;
+            }
         }
+
+        // Tous les blocs ont été détruits, régénérez le chemin
+        RegeneratePath();
+    }
+
+    void RegeneratePath()
+    {
+        foreach (GameObject block in pathBlocks)
+        {
+            Destroy(block);
+        }
+
+        // Générer un nouveau chemin sinueux
+        GeneratePath();
     }
 }

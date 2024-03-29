@@ -16,13 +16,13 @@ public class SC_CHARACTER_MOVE : MonoBehaviour
 
     bool isColl;
     private Vector3 targetPosition;
-    private Vector3 moveDirection;
+    [HideInInspector] public Vector3 moveDirection;
 
     private void Start()
     {
         // Snap character to the nearest tile position
         SnapToGrid();
-        moveDirection = Vector3.forward;
+        moveDirection = Vector3.zero;
 
         // Start moving coroutine
         StartCoroutine(MoveRoutine());
@@ -102,6 +102,7 @@ public class SC_CHARACTER_MOVE : MonoBehaviour
             moveDirection = Vector3.right;
     }
 
+    //Je suis Cadence wouaaah
 
     private void OnCollisionEnter(Collision collision)
     {
