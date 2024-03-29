@@ -105,7 +105,7 @@ public class SC_TileGenerator : MonoBehaviour
 
     public void DestroyGrid()
     {
-        player.GetComponent<SC_CHARACTER_MOVE>().moveDirection = Vector3.zero;
+        
         // Destroy all cubes
         foreach (GameObject cube in createdCubes)
         {

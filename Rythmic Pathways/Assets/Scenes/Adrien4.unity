@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.6023271, g: 0.118624024, b: 0.57488924, a: 1}
+  m_IndirectSpecularColor: {r: 0.6017743, g: 0.118557416, b: 0.5749292, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -263,44 +263,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73e3dbc40e99e234388b54c009b4bc3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
-  tileSize: 1
-  jumpHeight: 0.5
-  jumpCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 4.7569356
-      outSlope: 4.7569356
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.1837045
-      value: 0.8738705
-      inSlope: 3.3148313
-      outSlope: 3.3148313
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.050967015
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0.15451452
-      outSlope: 0.15451452
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  waitTime: 0.3
-  moveDirection: {x: 0, y: 0, z: 0}
+  pathLength: 0
+  cellSize: 0
+  pathPrefab: {fileID: 625174663}
+  playerPrefab: {fileID: 105198455}
 --- !u!4 &105198458 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1334505849181696209, guid: 9bb860cdd82491747a812a7364fcef04, type: 3}
@@ -358,8 +324,6 @@ GameObject:
   m_Component:
   - component: {fileID: 625174665}
   - component: {fileID: 625174664}
-  - component: {fileID: 625174666}
-  - component: {fileID: 625174667}
   m_Layer: 0
   m_Name: GRID MAKER (1)
   m_TagString: Untagged
@@ -374,19 +338,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 625174663}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 84ae59a4dd65e424d97b95c3f4c44fba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridSizeX: 10
-  gridSizeY: 10
+  pathLength: 20
   cellSize: 1
-  cellSizeY: 0.1
-  cubeColor: 0
-  color1: {r: 1, g: 0.88093454, b: 0, a: 0}
-  color2: {r: 1, g: 0.9618054, b: 0.66415095, a: 0}
-  cubeFab: {fileID: 7259059538587064394, guid: 2d577e8da5fbbc446a5f83d00fa96873, type: 3}
+  pathPrefab: {fileID: 7259059538587064394, guid: 2d577e8da5fbbc446a5f83d00fa96873, type: 3}
 --- !u!4 &625174665
 Transform:
   m_ObjectHideFlags: 0
@@ -402,45 +361,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &625174666
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 625174663}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddb51e670f786a9429cd270396490eda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gridSizeX: 10
-  gridSizeY: 10
-  cellSize: 1
-  cellSizeY: 0.1
-  cubeColor: 0
-  color1: {r: 1, g: 0.882353, b: 0, a: 0}
-  color2: {r: 1, g: 0.9607844, b: 0.6627451, a: 0}
-  cubeFab: {fileID: 7259059538587064394, guid: 2d577e8da5fbbc446a5f83d00fa96873, type: 3}
---- !u!114 &625174667
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 625174663}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71a519bc728bec54d83d098dc02c60ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gridSizeX: 10
-  gridSizeY: 10
-  cellSize: 1
-  cellSizeY: 0.1
-  color1: {r: 1, g: 0.882353, b: 0, a: 0}
-  color2: {r: 1, g: 0.9607844, b: 0.6627451, a: 0}
-  cubeFab: {fileID: 7259059538587064394, guid: 2d577e8da5fbbc446a5f83d00fa96873, type: 3}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
