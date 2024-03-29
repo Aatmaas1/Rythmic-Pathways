@@ -12,6 +12,7 @@ public class SC_CHARACTER_MOVE : MonoBehaviour
     public float tileSize = 1f; // Size of each tile in the grid
     public float jumpHeight = 0.5f; // Height of the jump
     public AnimationCurve jumpCurve; // Animation curve for jump interpolation
+    public float waitTime;
 
     private Vector3 targetPosition;
     private Vector3 moveDirection;
@@ -20,7 +21,7 @@ public class SC_CHARACTER_MOVE : MonoBehaviour
     {
         // Snap character to the nearest tile position
         SnapToGrid();
-        moveDirection = Vector3.zero;
+        moveDirection = Vector3.forward;
 
         // Start moving coroutine
         StartCoroutine(MoveRoutine());
@@ -31,7 +32,7 @@ public class SC_CHARACTER_MOVE : MonoBehaviour
         while (true)
         {
             // Wait for a short delay
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(waitTime);
 
             // Calculate target position based on current position and input direction
             targetPosition = transform.position + moveDirection * tileSize;
