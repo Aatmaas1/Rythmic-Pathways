@@ -102,6 +102,7 @@ public class SC_CHARACTER_MOVE : MonoBehaviour
             moveDirection = Vector3.right;
     }
 
+    //Je suis Cadence wouaaah
 
     private void OnCollisionEnter(Collision collision)
     {
