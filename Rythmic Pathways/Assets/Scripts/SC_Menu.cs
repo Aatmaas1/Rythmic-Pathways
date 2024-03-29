@@ -7,7 +7,7 @@ public class MainMenu : MonoBehaviour
     public void StartGame()
     {
         // Charger la scène du jeu
-        SceneManager.LoadScene("Ricky2");
+        SceneManager.LoadScene(1);
     }
 
     // Méthode pour quitter le jeu

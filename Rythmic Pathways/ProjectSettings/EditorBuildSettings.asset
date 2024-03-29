@@ -4,5 +4,12 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: f2181a9fcb63a7d4a94a70f42bef0652
+  - enabled: 1
+    path: Assets/Scenes/Ricky2.unity
+    guid: 262965f227ad82545b5d88b857da07d1
   m_configObjects: {}
+  m_UseUCBPForAssetBundles: 0
