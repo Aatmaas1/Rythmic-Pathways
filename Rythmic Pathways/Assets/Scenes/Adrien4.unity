@@ -300,6 +300,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   waitTime: 0.3
+  moveDirection: {x: 0, y: 0, z: 0}
 --- !u!4 &105198458 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1334505849181696209, guid: 9bb860cdd82491747a812a7364fcef04, type: 3}
@@ -357,6 +358,8 @@ GameObject:
   m_Component:
   - component: {fileID: 625174665}
   - component: {fileID: 625174664}
+  - component: {fileID: 625174666}
+  - component: {fileID: 625174667}
   m_Layer: 0
   m_Name: GRID MAKER (1)
   m_TagString: Untagged
@@ -371,12 +374,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 625174663}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 84ae59a4dd65e424d97b95c3f4c44fba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridSizeX: 5
+  gridSizeX: 10
   gridSizeY: 10
   cellSize: 1
   cellSizeY: 0.1
@@ -399,6 +402,45 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &625174666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 625174663}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddb51e670f786a9429cd270396490eda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridSizeX: 10
+  gridSizeY: 10
+  cellSize: 1
+  cellSizeY: 0.1
+  cubeColor: 0
+  color1: {r: 1, g: 0.882353, b: 0, a: 0}
+  color2: {r: 1, g: 0.9607844, b: 0.6627451, a: 0}
+  cubeFab: {fileID: 7259059538587064394, guid: 2d577e8da5fbbc446a5f83d00fa96873, type: 3}
+--- !u!114 &625174667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 625174663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71a519bc728bec54d83d098dc02c60ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridSizeX: 10
+  gridSizeY: 10
+  cellSize: 1
+  cellSizeY: 0.1
+  color1: {r: 1, g: 0.882353, b: 0, a: 0}
+  color2: {r: 1, g: 0.9607844, b: 0.6627451, a: 0}
+  cubeFab: {fileID: 7259059538587064394, guid: 2d577e8da5fbbc446a5f83d00fa96873, type: 3}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
