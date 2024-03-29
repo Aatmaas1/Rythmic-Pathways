@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
-using UnityEditor.Presets;
 using UnityEngine;
 using UnityEngine.Playables;
 
@@ -64,14 +62,23 @@ public class SC_CHARACTER_MOVE : MonoBehaviour
                         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, elapsedTime);
                     }
 
-                    // Set character position
-                    transform.position = interpolatedPosition;
+
+                    if(moveDirection != Vector3.zero)
+                    {
+                        // Set character position
+                        transform.position = interpolatedPosition;
+                    }
+                 
 
                     yield return null;
                 }
 
-                // Ensure the character lands exactly on the target position
+                if(targetPosition != null)
+                {
+                        // Ensure the character lands exactly on the target position
                 transform.position = targetPosition;
+                }
+            
             }
          
         }

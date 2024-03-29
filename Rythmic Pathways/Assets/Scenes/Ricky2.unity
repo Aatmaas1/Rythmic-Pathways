@@ -497,14 +497,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84ae59a4dd65e424d97b95c3f4c44fba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridSizeX: 10
-  gridSizeY: 10
+  pathLength: 0
   cellSize: 1
-  cellSizeY: 0.1
-  cubeColor: 0
-  color1: {r: 1, g: 0.88093454, b: 0, a: 0}
-  color2: {r: 1, g: 0.9618054, b: 0.66415095, a: 0}
-  cubeFab: {fileID: 7259059538587064394, guid: 2d577e8da5fbbc446a5f83d00fa96873, type: 3}
+  pathPrefab: {fileID: 0}
 --- !u!4 &625174665
 Transform:
   m_ObjectHideFlags: 0
@@ -588,11 +583,11 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Intensity: 3
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
-  m_CookieSize: 10
+  m_CookieSize: 1e+12
   m_Shadows:
     m_Type: 2
     m_Resolution: -1
