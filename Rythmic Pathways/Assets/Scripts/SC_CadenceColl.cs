@@ -8,33 +8,33 @@ public class SC_CadenceColl : MonoBehaviour
 {
     public int pv = 5;
     public int score = 0;
-    public bool canColl;
+    public bool isColl;
     private void OnCollisionEnter(Collision collision)
     {
         print("Collided");
 
-        if(canColl == true)
-        {
             if (collision.gameObject.tag == "LightCube")
             {
+                isColl = false;
                 print("yayy");
-                score += 1;
-               
-                Destroy(collision.gameObject);
             }
-            else
+            else if(isColl == true)
             {
                 pv -= 1;
                 print("You suck");
             }
-
-            //canColl = false;
-        }
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        //canColl = true;
+
+        if (collision.gameObject.tag == "LightCube")
+        {
+            print("yayy");
+            score += 1;
+            isColl = true;
+            Destroy(collision.gameObject);
+        }
     }
 
     private void Update()
